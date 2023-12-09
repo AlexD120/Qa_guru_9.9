@@ -4,19 +4,24 @@ on:
   push:
     branches:
       - "main"
+
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up Python 3.x
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Install dependencies
+
+      - name: Run tests
         run: |
           pytest --alluredir=allure-results
